@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Toolbar mainToolbar;
-    private EditText valorTxt, freteTxt, icmsTxt, ipiTxt, valorAgregadoTxt;
+    private EditText valorTxt, valorAgregadoTxt;
     private FloatingActionButton buttonNext;
     private Valor valor;
 
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        iniciarInterfaces();
 
-        buttonNext = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         buttonNext.setOnClickListener(this.nextBtnOnClickListener);
 
     }
@@ -54,14 +54,17 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    private void iniciarInterfaces(){
+        this.mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        this.buttonNext = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        this.valorTxt = (EditText) findViewById(R.id.valor_edit_text);
+        this.valorAgregadoTxt = (EditText) findViewById(R.id.valor_agregado_edit_text);
+    }
+
     private String lerCampos(){
 
         String valorObtido = "";
-        this.valorTxt = (EditText) findViewById(R.id.valor_edit_text);
-        this.freteTxt = (EditText) findViewById(R.id.frete_edit_text);
-        this.icmsTxt = (EditText) findViewById(R.id.icms_edit_text);
-        this.ipiTxt = (EditText) findViewById(R.id.ipi_edit_text);
-        this.valorAgregadoTxt = (EditText) findViewById(R.id.valor_agregado_edit_text);
+
 
         if(Valor.isCampoPreenchido(valorTxt) &&
                 Valor.isCampoPreenchido(valorAgregadoTxt)){
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
             float valorProduto = Float.parseFloat(valorTxt.getText().toString());
             float valorAgregado = Float.parseFloat(valorAgregadoTxt.getText().toString());
+
             valor = new Valor(valorProduto, valorAgregado);
 
             Gson gson = new Gson();
