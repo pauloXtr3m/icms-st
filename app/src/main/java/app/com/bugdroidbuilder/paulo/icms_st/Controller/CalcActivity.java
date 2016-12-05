@@ -1,10 +1,12 @@
-package app.com.bugdroidbuilder.paulo.icms_st;
+package app.com.bugdroidbuilder.paulo.icms_st.Controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import app.com.bugdroidbuilder.paulo.icms_st.R;
 
 public class CalcActivity extends AppCompatActivity {
 
