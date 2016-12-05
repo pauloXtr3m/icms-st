@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,16 +18,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    Toolbar mainToolbar;
-    EditText valorTxt, freteTxt, icmsTxt, ipiTxt, valorAgregadoTxt;
-    FloatingActionButton buttonNext;
-    Valor valor = new Valor();
+    private Toolbar mainToolbar;
+    private EditText valorTxt, freteTxt, icmsTxt, ipiTxt, valorAgregadoTxt;
+    private FloatingActionButton buttonNext;
+    private Valor valor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+
         buttonNext = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         buttonNext.setOnClickListener(this.nextBtnOnClickListener);
 
@@ -37,30 +39,47 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-            Intent intent = new Intent(MainActivity.this, CalcActivity.class);
 
-            intent.putExtra("calculo", lerValores());
-            startActivity(intent);
+            String valorObtido = lerCampos();
+
+            if(!TextUtils.isEmpty(valorObtido)){
+
+                Intent intent = new Intent(MainActivity.this, CalcActivity.class);
+                intent.putExtra("calculo", valorObtido);
+                startActivity(intent);
+            }
+
 
         }
 
     };
 
-    private String lerValores(){
+    private String lerCampos(){
+
         String valorObtido = "";
-        valorTxt = (EditText) findViewById(R.id.valor_edit_text);
+        this.valorTxt = (EditText) findViewById(R.id.valor_edit_text);
+        this.freteTxt = (EditText) findViewById(R.id.frete_edit_text);
+        this.icmsTxt = (EditText) findViewById(R.id.icms_edit_text);
+        this.ipiTxt = (EditText) findViewById(R.id.ipi_edit_text);
+        this.valorAgregadoTxt = (EditText) findViewById(R.id.valor_agregado_edit_text);
+
+        if(Valor.isCampoPreenchido(valorTxt) &&
+                Valor.isCampoPreenchido(valorAgregadoTxt)){
 
 
-        freteTxt = (EditText) findViewById(R.id.frete_edit_text);
-        icmsTxt = (EditText) findViewById(R.id.icms_edit_text);
-        ipiTxt = (EditText) findViewById(R.id.ipi_edit_text);
-        valorAgregadoTxt = (EditText) findViewById(R.id.valor_agregado_edit_text);
+            float valorProduto = Float.parseFloat(valorTxt.getText().toString());
+            float valorAgregado = Float.parseFloat(valorAgregadoTxt.getText().toString());
+            valor = new Valor(valorProduto, valorAgregado);
 
-        Gson gson = new Gson();
-        valorObtido = gson.toJson(valor);
-        
+            Gson gson = new Gson();
+            valorObtido = gson.toJson(valor);
+
+        }
+
         return valorObtido;
+
     }
+
 
 
 

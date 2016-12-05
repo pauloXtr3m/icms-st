@@ -8,4 +8,10 @@
     <string name="icms_destacado">ICMS destacado R$</string>
     <string name="margem_valor_agregado">Margem de valor agregado %</string>
 
+
+    <string-array name="estados_array">
+        <item>GO</item>
+        <item>SP</item>
+        <item>MG</item>
+    </string-array>
 </resources>

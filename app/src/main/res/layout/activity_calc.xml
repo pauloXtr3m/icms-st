@@ -31,7 +31,41 @@
         </android.support.design.widget.AppBarLayout>
 
 
+        <Spinner
+            android:id="@+id/estados_spinner"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/valor_text"
+                android:text="@string/valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"/>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/valor_text_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/valor_text"
+                android:layout_alignEnd="@id/valor_text"
+                />
+        </RelativeLayout>
+
+
+
+
     </LinearLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
 
