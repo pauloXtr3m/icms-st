@@ -9,17 +9,18 @@ import android.widget.EditText;
 
 public class Valor {
 
-    private float valorProduto, valorAgregado;
+    private float valorProduto, valorAgregado, valorEstado;
 
     private float icmsSt, totalMva, baseIcmsSt;
 
 
-    public Valor(float valorProduto, float valorAgregado){
+    public Valor(float valorProduto, float valorAgregado, float valorEstado){
         this.valorProduto = valorProduto;
         this.valorAgregado = valorAgregado;
-
+        this.valorEstado = valorEstado;
         this.totalMva = valorProduto*(valorAgregado/100);
         this.baseIcmsSt = valorProduto + totalMva;
+        this.icmsSt = this.baseIcmsSt*(valorEstado/100);
     }
 
     public float getValorProduto() {
@@ -38,6 +39,9 @@ public class Valor {
         this.valorAgregado = valorAgregado;
     }
 
+    public float getIcmsSt() {
+        return icmsSt;
+    }
 
     public static boolean isCampoPreenchido(EditText textField){
 

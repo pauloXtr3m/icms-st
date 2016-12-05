@@ -23,6 +23,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:background="?attr/colorPrimary"
+                android:title="Resultado"
+                android:titleTextColor="#ffffffff"
                 android:elevation="6dp"
                 android:minHeight="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_arrow_back"
@@ -30,16 +32,6 @@
 
         </android.support.design.widget.AppBarLayout>
 
-
-        <Spinner
-            android:id="@+id/estados_spinner"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-
-            />
 
         <RelativeLayout
             android:layout_width="match_parent"

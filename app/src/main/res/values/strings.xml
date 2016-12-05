@@ -10,8 +10,9 @@
 
 
     <string-array name="estados_array">
-        <item>GO</item>
         <item>SP</item>
         <item>MG</item>
+        <item>ES</item>
+        <item>RJ</item>
     </string-array>
 </resources>

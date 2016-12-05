@@ -1,4 +1,4 @@
-package app.com.bugdroidbuilder.paulo.icms_st.Controller;
+package app.com.bugdroidbuilder.paulo.icms_st.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,25 +16,15 @@ import app.com.bugdroidbuilder.paulo.icms_st.model.Valor;
 
 public class CalcActivity extends AppCompatActivity {
 
-    Spinner estados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
 
-        Toolbar toolbar  = (Toolbar) findViewById(R.id.calc_toolbar);
-        toolbar.setNavigationOnClickListener(btnBackClickListener);
-        estados = (Spinner) findViewById(R.id.estados_spinner);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.estados_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        estados.setAdapter(adapter);
+        iniciarInterfaces();
 
-        iniciarInterface();
     }
 
     View.OnClickListener btnBackClickListener = new View.OnClickListener() {
@@ -47,7 +37,10 @@ public class CalcActivity extends AppCompatActivity {
         }
     };
 
-    private void iniciarInterface(){
+    private void iniciarInterfaces(){
+        Toolbar toolbar  = (Toolbar) findViewById(R.id.calc_toolbar);
+        toolbar.setNavigationOnClickListener(btnBackClickListener);
+
         TextView txt = (TextView) findViewById(R.id.valor_text_value);
 
 
@@ -57,7 +50,7 @@ public class CalcActivity extends AppCompatActivity {
 
         Valor valor = gson.fromJson(valores, Valor.class);
 
-        txt.setText(Float.toString(valor.getValorProduto()));
+        txt.setText(Float.toString(valor.getIcmsSt()));
     }
 
 
