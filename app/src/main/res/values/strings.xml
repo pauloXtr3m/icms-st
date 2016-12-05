@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ICMS-ST</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="valor">Valor R$</string>
+    <string name="frete">Frete R$</string>
+    <string name="ipi">IPI R$</string>
+    <string name="icms_destacado">ICMS destacado R$</string>
+    <string name="margem_valor_agregado">Margem de valor agregado %</string>
+
+</resources>
