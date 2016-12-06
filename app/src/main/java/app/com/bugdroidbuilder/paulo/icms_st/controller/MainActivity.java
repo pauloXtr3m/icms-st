@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Spinner estados;
     private Toolbar mainToolbar;
-    private EditText valorTxt, valorAgregadoTxt;
+    private EditText valorTxt, valorAgregadoTxt, valorIcmsTxt;
     private FloatingActionButton buttonNext;
-    private Valor valor;
+
 
 
     @Override
@@ -46,17 +46,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
+            Valor valorObtido = lerCampos();
 
-            String valorObtido = lerCampos();
+            if(valorObtido != null){
 
-            if(!TextUtils.isEmpty(valorObtido)){
-
-                Intent intent = new Intent(MainActivity.this, CalcActivity.class);
-                intent.putExtra("calculo", valorObtido);
-
-                buttonNext.hide();
-
-                startActivity(intent);
             }
 
 
@@ -69,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         this.buttonNext = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         this.valorTxt = (EditText) findViewById(R.id.valor_edit_text);
         this.valorAgregadoTxt = (EditText) findViewById(R.id.valor_agregado_edit_text);
+        this.valorIcmsTxt = (EditText) findViewById(R.id.icms_edit_text);
 
         estados = (Spinner) findViewById(R.id.estados_spinner);
 
@@ -81,26 +75,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String lerCampos(){
+    private Valor lerCampos(){
 
-        String valorObtido = "";
+        Valor valor = null;
 
-
-        if(Valor.isCampoPreenchido(valorTxt) &&
-                Valor.isCampoPreenchido(valorAgregadoTxt)){
+        if(Valor.isCampoPreenchido(valorTxt)
+                && Valor.isCampoPreenchido(valorAgregadoTxt)
+                && Valor.isCampoPreenchido(valorIcmsTxt)){
 
             float valorEstado = pegarValorEstado(estados.getSelectedItemPosition());
             float valorProduto = Float.parseFloat(valorTxt.getText().toString());
             float valorAgregado = Float.parseFloat(valorAgregadoTxt.getText().toString());
-
-            valor = new Valor(valorProduto, valorAgregado, valorEstado);
-
-            Gson gson = new Gson();
-            valorObtido = gson.toJson(valor);
-
+            float valorIcms = Float.parseFloat(valorIcmsTxt.getText().toString());
+            valor = new Valor(valorProduto, valorAgregado,valorIcms, valorEstado);
         }
 
-        return valorObtido;
+        return valor;
 
     }
 

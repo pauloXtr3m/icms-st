@@ -14,13 +14,13 @@ public class Valor {
     private float icmsSt, totalMva, baseIcmsSt;
 
 
-    public Valor(float valorProduto, float valorAgregado, float valorEstado){
+    public Valor(float valorProduto, float valorAgregado, float valorIcmsDestacado, float valorEstado){
         this.valorProduto = valorProduto;
         this.valorAgregado = valorAgregado;
         this.valorEstado = valorEstado;
         this.totalMva = valorProduto*(valorAgregado/100);
         this.baseIcmsSt = valorProduto + totalMva;
-        this.icmsSt = this.baseIcmsSt*(valorEstado/100);
+        this.icmsSt = (this.baseIcmsSt*(valorEstado/100)) - valorIcmsDestacado;
     }
 
     public float getValorProduto() {

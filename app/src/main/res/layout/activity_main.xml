@@ -107,46 +107,43 @@
         </RelativeLayout>
 
 
-
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Origem:"
-            android:textSize="18sp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp">
 
-        <Spinner
-            android:id="@+id/estados_spinner"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/icms_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="36dp"
+                android:paddingStart="36dp">
 
-            />
 
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Destino:"
-            android:textSize="18sp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"/>
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/icms_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Valor do ICMS destacado"
+                    android:inputType="number"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/icms_layout"
+                android:layout_alignStart="@id/icms_layout"
+                android:text="R$"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"/>
 
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Goiás"
-            android:textSize="18sp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/colorAccent"/>
+        </RelativeLayout>
 
+        <include layout="@layout/origem_destino"/>
+        <include layout="@layout/icms_st"/>
 
     </LinearLayout>
 
