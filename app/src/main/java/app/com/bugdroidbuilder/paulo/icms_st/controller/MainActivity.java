@@ -1,17 +1,14 @@
 package app.com.bugdroidbuilder.paulo.icms_st.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
-import com.google.gson.Gson;
+import android.widget.TextView;
 
 import app.com.bugdroidbuilder.paulo.icms_st.R;
 import app.com.bugdroidbuilder.paulo.icms_st.model.Valor;
@@ -23,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mainToolbar;
     private EditText valorTxt, valorAgregadoTxt, valorIcmsTxt;
     private FloatingActionButton buttonNext;
+    private TextView icmsTxt, icmsResultado;
 
 
 
@@ -49,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
             Valor valorObtido = lerCampos();
 
             if(valorObtido != null){
-
+                icmsTxt.setVisibility(View.VISIBLE);
+                icmsResultado.setText(Float.toString(valorObtido.getIcmsSt()));
+            }else{
+                System.out.println("erro");
             }
 
 
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         this.valorTxt = (EditText) findViewById(R.id.valor_edit_text);
         this.valorAgregadoTxt = (EditText) findViewById(R.id.valor_agregado_edit_text);
         this.valorIcmsTxt = (EditText) findViewById(R.id.icms_edit_text);
+        this.icmsTxt = (TextView) findViewById(R.id.icms_txt);
+        this.icmsResultado = (TextView) findViewById(R.id.icms_resultado);
 
         estados = (Spinner) findViewById(R.id.estados_spinner);
 

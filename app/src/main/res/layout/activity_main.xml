@@ -162,8 +162,7 @@
             app:fabSize="normal"
             android:src="@drawable/ic_arrow_forward"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginEnd="16dp" />
     </RelativeLayout>
 
